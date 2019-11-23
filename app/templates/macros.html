@@ -1,0 +1,67 @@
+
+{% macro displayPitches(all_pitches)%}
+{% if all_pitches%}
+    {% for pitch in all_pitches%}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="media-body">
+                    <div class="row">
+                       
+                        <div class="col-md-10">
+                            <p class="pitch-metadata">
+                                <h3 class="inline"><a class="pitch-title" href="#">{{pitch.pitch_title}}</a></h3>
+                                <small class="text-muted">  Posted on {{pitch.posted.strftime('%d/%m/%Y')}} | {{pitch.category}}</small>
+                                <hr>
+                            </p>
+                            <p class="pitch-content">{{pitch.content}}</p>
+                            <small class="text-muted">
+                             <a class="mr-2" href="#">-Author {{pitch.user.username}}</a>
+                            </small>
+                            <div class="comments">
+
+                                <a href="{{url_for('main.comment',pitch_id=pitch.id)}}" class= "btn btn-primary btn-sm"><i class="fas fa-comment"></i> Comment</a>
+                                <a href="{{url_for('main.like',pitch_id=pitch.id)}}" class= "btn btn-success btn-sm"><i class="far fa-thumbs-up"></i>Like <span class="likes">{{pitch.likes.count()}}</span></a>
+
+                                <a href="{{url_for('main.dislike',pitch_id=pitch.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-down"></i>Dislike <span class="dislikes">{{pitch.dislikes.count()}}</span></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+{% endif %}
+{% endmacro %}
+
+{% macro displayComments(all_comments)%}
+{% if all_comments%}
+
+
+
+    {% for comment in all_comments%}
+    
+
+
+    <div class="row">
+
+
+
+                <div class="media-body">
+                    <a class="mr-2" href="#">{{comment.user.username}}</a>
+                    <p class="pitch-content">{{comment.comment_content}}</p>
+
+                </div>
+
+    </div>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+{% endmacro %}

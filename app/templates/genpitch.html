@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
+<div class="container-fluid">
+    <div>
+        <h2>{{general.post}}</h2>
+    </div>
+    <div>
+        <p>{{general.body}}</p>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+        $(function() {
+          $('a#test').bind('click', function() {
+            $.getJSON('/ratings',
+                function(data) {
+              $('#upvote').text(data)
+            });
+            return false;
+          });
+        });
+        $(function() {
+          $('a#tests').bind('click', function() {
+            $.getJSON('/rating',
+                function(data) {
+              $('#downvote').text(data)
+            });
+            return false;
+          });
+        });
+</script>
+
+
+    <!--button-->
+
+    <form>
+        <a href=# id=test>
+            <button class='btn btn-success'>Upvote</button>
+        </a>
+        <span id="upvote"></span>
+
+        <a href=# id=tests>
+            <button class='btn btn-danger'>Downvote</button>
+        </a>
+        <span id="downvote"></span>
+    </form>
+
+    <br>
+    <br> {{ wtf.quick_form(review_form) }} {%for rev in review %}
+    <div class="panel">
+        <h5>{{rev.review}}</h5>
+        <h4> &nbsp; by {{current_user}}</h4>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

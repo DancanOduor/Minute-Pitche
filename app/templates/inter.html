@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <a href="/user/category/interview">
+        <button class="btn btn-danger">
+             Create a pitch</button>
+    </a>
+    <br> {%for interview in posts%}
+    <div class="row">
+        <div class="panel panel-default">
+            <a style="text-decoration: none;" href="/user/interview/{{interview.id}}">
+                <h4>{{interview.post}}</h4>
+            </a>
+            <h5>by {{interview.user.username}}</h5>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

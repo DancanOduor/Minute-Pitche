@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <a href="/user/category/seduction">
+        <button class="btn btn-danger">
+            Pitch an Idea</button>
+    </a>
+    <br> {%for seduction in posts%}
+    <div class="row">
+        <div class="panel panel-default">
+            <a style="text-decoration: none;" href="/user/seduction/{{seduction.id}}">
+                <h4>{{seduction.post}}</h4>
+            </a>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

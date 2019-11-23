@@ -1,0 +1,20 @@
+ 
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container-fluid">
+    <a href="/user/category/advertisement">
+        <button class="btn btn-danger">
+            Create a pitch</button>
+    </a>
+    <br> {%for advertisement in posts%}
+    <div class="row">
+        <div class="panel panel-default">
+            <a style="text-decoration: none;" href="/user/advertisement/{{advertisement.id}}">
+                <h4>{{advertisement.post}}</h4>
+            </a>
+            <h5>by {{advertisement.user.username}}</h5>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

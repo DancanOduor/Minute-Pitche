@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="media-body">
+            <div class="row">
+                
+                <div class="col-md-10">
+                    <p class="pitch-metadata">
+                        <h3 class="inline"><a class="pitch-title" href="#">{{pitch.pitch_title}}</a></h3>
+                        <small class="text-muted">  Posted on {{pitch.posted.strftime('%d/%m/%Y')}} | {{pitch.category}}</small>
+
+
+                        <hr>
+                    </p>
+                    <p class="pitch-content">{{pitch.content}}</p>
+                    <small class="text-muted">
+                     <p class="mr-2">-Author {{pitch.user.username}}</p>
+                    </small>
+                    <p class="pitchback">  <a href="/"> Back to pitches </a> </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        {{ wtf.quick_form(comment_form)}}
+    </div>
+    <div class="something">
+         {{macro.displayComments(comment)}}
+    </div>
+</div>
+
+{% endblock %}

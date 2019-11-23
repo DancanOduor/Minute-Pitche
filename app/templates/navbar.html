@@ -1,0 +1,33 @@
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top opaque-navbar">
+      <div class="container">
+        <a class="navbar-brand mr-4 brand" href="/">Pitch</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+  
+  
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+  
+              <!-- <ul class="nav navbar-nav navbar-right"> -->
+                 {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link brand" href="/">Home</a>
+                <li><a class="nav-item nav-link brand" href="/pitch/new">Pitch</a></li>
+                <li><a class="nav-item nav-link brand" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+                <li> <a class="nav-item nav-link brand" href="{{url_for('auth.logout')}}">Sign out</a></li>
+  
+                 {% else %}
+                 <a class="nav-item nav-link brand" href="/">Home</a>
+                 <li><a class="nav-item nav-link brand" href="{{url_for('auth.login')}}">Login</a></li>
+                  <li><a class="nav-item nav-link brand" href="{{url_for('auth.register')}}">Register</a><li>
+                 {%endif%}
+               <!-- </ul> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>

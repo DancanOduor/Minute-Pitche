@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <a href="/user/category/music">
+        <button class="btn btn-danger">
+            Create a pitch</button>
+    </a>
+    <br> {%for music in posts%}
+    <div class="row">
+        <div class="panel panel-default">
+            <a style="text-decoration: none;" href="/user/music/{{music.id}}">
+                <h4>{{music.post}}</h4>
+            </a>
+            <h5>by {{music.user.username}}</h5>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
+© 2019 GitHub, Inc.

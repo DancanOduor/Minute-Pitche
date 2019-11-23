@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <a href="/user/category/sale">
+        <button class="btn btn-danger">
+            Create a pitch</button>
+    </a>
+    <br> {%for sale in posts%}
+    <div class="row">
+        <div class="panel panel-default">
+            <a style="text-decoration: none;" href="/user/sale/{{sale.id}}">
+                <h4>{{sale.post}}</h4>
+            </a>
+            <h5>by {{sale.user.username}}</h5>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
